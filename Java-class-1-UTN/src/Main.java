@@ -1,3 +1,4 @@
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -68,6 +69,12 @@ public class Main {
             case 17:
                 calcularHipotenusaDeTriRectangulo();
                 break;
+            case 18:
+                calcularMaximoMinimoYpromedioTemp();
+                break;
+            case 19:
+                generarAleatoriosEntreUnYOtro();
+                break;
         }
 
         scanner.close();
@@ -77,7 +84,7 @@ public class Main {
     {
         /*Ejercicio nº1: Calcular el promedio de un arreglo de números enteros.
         Realizar variantes con arreglos ya inicializados e ingreso por teclado.*/
-        float promedio = 0;
+        float promedio;
         float sum = 0;
         for (int i = 0; i < arreglito.length; i++)
         {
@@ -174,8 +181,8 @@ public class Main {
     {
         /*Ejercicio nº8: Sumar (en cantidad, no acumular) cuántos números positivos ingresa un usuario.*/
 
-        char op = 's';
-        int num = 0;
+        char op;
+        int num;
         int cont = 0;
         do {
             num = scanner.nextInt();
@@ -221,7 +228,7 @@ public class Main {
     public static void encontrarASCII()
     {
         /*Ejercicio nº10: Encontrar el valor ASCII de un carácter.*/
-        char letra = 's';
+        char letra;
 
         System.out.println("Ingrese la letra que desee transformar: ");
         scanner.nextLine();
@@ -233,7 +240,7 @@ public class Main {
     public static void multiplicarDosNumeros()
     {
         /*Ejercicio nº11: Multiplicar dos números.*/
-        int num1 = 0, num2 = 0, multiplicacion = 0;
+        int num1, num2,multiplicacion;
         System.out.println("Ingrese el primer numero a multiplicar: ");
         num1 = scanner.nextInt();
         System.out.println("Ingrese el segundo numero a multiplicar: ");
@@ -251,8 +258,8 @@ public class Main {
             Ejercicio nº12: Realizar un programa que le pregunte al usuario que área desea calcular.
              Las opciones son: rectángulo, cuadrado, triangulo y circulo.
          */
-        int opSw = 0, num1 = 0, num2 = 0;
-        float area = 0;
+        int opSw, num1, num2;
+        float area;
         boolean flag = false;
 
         do {
@@ -375,9 +382,75 @@ public class Main {
         int cateto1 = scanner.nextInt();
         System.out.println("Ingrese el tamaño del cateto 2: ");
         int cateto2 = scanner.nextInt();
-        double hipotenusa = (double) Math.sqrt(Math.pow(cateto1,2)+Math.pow(cateto2,2));
+        double hipotenusa = Math.sqrt(Math.pow(cateto1,2)+Math.pow(cateto2,2));
 
         System.out.println("La hipotenusa es: "+hipotenusa);
+
+    }
+    static public void calcularMaximoMinimoYpromedioTemp()
+    {
+        /*Ejercicio nº19: Programa lea 30 temperaturas correspondientes a un mes y calcule el maximo, el minimo y el promedio.*/
+        int dimArreglo = 30,maximo = 0,minimo = 0;
+        float promedioTemp = 0;
+        int[] tempMes = new int[dimArreglo];
+        Random random = new Random();
+        for(int i = 0;i<dimArreglo;i++)
+        {
+            tempMes[i] = random.nextInt(45);//cargo el arreglo de forma aleatoria simulando las temperaturas
+        }
+        minimo = tempMes[0];
+        for(int i = 0;i<dimArreglo;i++)
+        {
+            if(maximo <tempMes[i])
+            {
+                maximo = tempMes[i];//me quedo con la maxima temperatura
+            }
+            if(minimo > tempMes[i])
+            {
+            minimo = tempMes[i];//me quedo con el minimo de temperatura
+            }
+            promedioTemp+=tempMes[i];
+        }
+
+        mostrarArregloTemperaturas(tempMes);
+        System.out.println("La temperatura maxima del mes fue de: "+maximo);
+        System.out.println("La temperatura minima del mes fue de: "+minimo);
+        System.out.println("El promedio de temperatura del mes fue de: "+promedioTemp/dimArreglo);
+    }
+    static public void mostrarArregloTemperaturas(int[] temperatura)//modularizar con variables...
+    {
+        for(int i = 0;i<30;i++)
+        {
+            System.out.printf(""+temperatura[i]+"°grados ");
+            if(i == 9||i == 19||i== 29)
+            {
+                System.out.println("\n");
+            }
+        }
+
+
+    }
+    static public void generarAleatoriosEntreUnYOtro()
+    {
+        /*Ejercicio nº20:Pide por teclado dos números y genera 10 números aleatorios entre esos números. Usa el método Math.random para generar un número entero aleatorio */
+        System.out.println("Ingrese el primer numero para generar aleatorios: ");
+        int numeroUno = scanner.nextInt();
+        System.out.println("Ingrese el segundo numero para generar aleatorios: ");//falta validar...min y max but later
+        int numeroDos = scanner.nextInt();
+
+        int dim = 10;//dimension del arreglo
+        int[] rangoNumero = new int[dim];
+        Random random = new Random();
+        for(int i = 0;i<dim;i++)
+        {
+            rangoNumero[i] = random.nextInt(numeroDos-numeroUno+1)+numeroUno;
+        }
+        System.out.println("numero 1: "+numeroUno);
+        for(int i= 0;i<dim;i++)
+        {
+            System.out.println(" "+rangoNumero[i]);
+        }
+        System.out.println("numero 2: "+numeroDos);
 
     }
 }
