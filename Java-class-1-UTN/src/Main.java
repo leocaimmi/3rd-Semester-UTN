@@ -6,6 +6,7 @@ public class Main {
 
     public static void main(String[] args) {
         int opSw;
+
         System.out.println("Ingrese el ejercicio que quiere hacer: ");
 
 
@@ -74,6 +75,12 @@ public class Main {
                 break;
             case 19:
                 generarAleatoriosEntreUnYOtro();
+                break;
+            case 20:
+               verificarDiaLaboral();
+                break;
+            case 21:
+                mostrarCifrasDeUnNumero();
                 break;
         }
 
@@ -453,5 +460,97 @@ public class Main {
         System.out.println("numero 2: "+numeroDos);
 
     }
+
+    static public void verificarDiaLaboral()
+    {
+        /*Ejercicio nº21:  Crea una aplicación que nos pida un día de la semana y que nos diga si es un día laboral o no. Usa un switch para ello.*/
+        int opSw = 0;
+       // String[] semanaCompleta = new String[]{"lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"};
+            //PREGUNTAR POR QUE NO ME DEJA LEER STRINGS||| Todo el ejercicio lo tuve que modificar para que funciones porque no me dejaba leer strings y quedo esto... Pero funciona
+        System.out.println(""" 
+            1.Lunes
+            2.Martes
+            3.Miercoles
+            4.Jueves
+            5.Viernes
+            6.Sabado
+            7.Domingo""");
+        System.out.println("Ingrese un dia de la semana para saber si es laboral o no");
+        int nroDiaDeLaSemana = scanner.nextInt();
+        String diaSemana;
+        if(nroDiaDeLaSemana == 1)
+        {
+            diaSemana = "lunes";
+            opSw = 1;
+        }else if(nroDiaDeLaSemana == 2)
+        {
+            diaSemana = "martes";
+            opSw = 2;
+        }else if(nroDiaDeLaSemana == 3)
+        {
+            diaSemana = "miercoles";
+            opSw = 3;
+        }else if(nroDiaDeLaSemana == 4)
+        {
+            diaSemana = "jueves";
+            opSw = 4;
+        }else if(nroDiaDeLaSemana == 5)
+        {
+            diaSemana = "viernes";
+            opSw = 5;
+        }else if(nroDiaDeLaSemana == 6)
+        {
+            diaSemana = "sabado";
+            opSw = 6;
+        }else if(nroDiaDeLaSemana == 7)
+        {
+            diaSemana = "domingo";
+            opSw = 7;
+        }
+
+        switch(opSw)
+        {
+            case 1:
+                System.out.println("El lunes es un dia laboral");
+                break;
+            case 2:
+                System.out.println("El martes es un dia laboral");
+                break;
+            case 3:
+                System.out.println("El miercoles es un dia laboral");
+                break;
+            case 4:
+                System.out.println("El jueves es un dia laboral");
+                break;
+            case 5:
+                System.out.println("El viernes es un dia laboral");
+                break;
+            case 6:
+                System.out.println("El sabado no es un dia laboral");
+                break;
+            case 7:
+                System.out.println("El domingo no es un dia laboral");
+                break;
+            default:
+                System.out.println("Eligio un dia inexistente");
+                break;
+        }
+    }
+
+    public static void mostrarCifrasDeUnNumero()
+    {
+        /*Ejercicio nº22: Pide por teclado un número entero positivo (debemos controlarlo) y muestra  el número de cifras que tiene.
+         Por ejemplo: si introducimos 1250, nos muestre que tiene 4 cifras. Tendremos que controlar si tiene una o más cifras, al mostrar el mensaje.*/
+        int num;
+        do{
+            System.out.println("Ingrese el numero a descifrar(solo numeros positivos): ");
+            num = scanner.nextInt();
+        }while(num<0);
+        String cifras = String.valueOf(num);//me convierte el numero a un string
+
+        System.out.println("El numero "+num+" tiene: "+cifras.length()+" cifras");
+    }
+
+
 }
 
