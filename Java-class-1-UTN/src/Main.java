@@ -3,12 +3,11 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scanner;
-
+// Ejercicios basicos en Java ||| En el codigo hay acoplamiento porque son ejercicios de prueba sensillos.
     public static void main(String[] args) {
         int opSw;
 
         System.out.println("Ingrese el ejercicio que quiere hacer: ");
-
 
         scanner = new Scanner(System.in);
         opSw = scanner.nextInt();
@@ -28,7 +27,6 @@ public class Main {
                 imprimirPrimos();
                 break;
             case 4:
-
                 imprimirPrimosPorRango(scanner.nextInt());
                 break;
             case 5:
@@ -81,6 +79,9 @@ public class Main {
                 break;
             case 21:
                 mostrarCifrasDeUnNumero();
+                break;
+            case 22:
+                calculadoraPolacaInversaApp();
                 break;
         }
 
@@ -550,7 +551,55 @@ public class Main {
 
         System.out.println("El numero "+num+" tiene: "+cifras.length()+" cifras");
     }
+    public static void calculadoraPolacaInversaApp()
+    {
 
+        int num1 = 0, num2 = 0;
+        double rta = 0;
 
+        System.out.println("Ingrese el numero 1: ");
+        num1 = scanner.nextInt();
+
+        System.out.println("""
+                [+]
+                [-]
+                [*]
+                [/]
+                [^]
+                [%]
+                """);
+        System.out.println("Ingrese que operacion desea realizar: ");
+        scanner.nextLine();
+        String signoAritmetico = scanner.nextLine();
+
+        System.out.println("Ingrese el numero 2: ");
+        num2 = scanner.nextInt();
+        switch(signoAritmetico)
+        {
+            case "+":
+                rta = num1 + num2;
+                break;
+            case "-":
+                rta = num1 - num2;
+                break;
+            case "*":
+                rta = num1 * num2;
+                break;
+            case "/":
+                rta =num1/num2;
+                break;
+            case "^":
+                rta = Math.pow(num1,num2);
+                break;
+            case "%":
+                rta = num1%num2;
+                break;
+            default:
+                System.out.println("Operacion invalida...");
+                break;
+        }
+        System.out.println("Resultado: "+rta);
+
+    }
 }
 
