@@ -16,7 +16,8 @@ public class Main {
     public static void menu(DoME dome)
     {
         int op,opSw;
-
+        int[] arreglo1 = arreglo[10];
+        System.out.printf("", arreglo1.);
         do
         {
             opcionDeCarga();

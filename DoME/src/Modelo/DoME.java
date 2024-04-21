@@ -37,6 +37,7 @@ public class DoME {
             }else if(elementos.get(i) instanceof DVD)
             {
                texto+= elementos.get(i).imprimir();
+
             }
 
         }
