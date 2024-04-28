@@ -3,11 +3,11 @@ package modelo;
 public class EComision extends Empleado{
     //atributos
     private int nroClientesCaptados;
-    private Double montoXCliente;
+    private double montoXCliente;
 
     //constructores
 
-    public EComision(String dni, String nombre, String apellido, int nroClientesCaptados, Double montoXCliente, int anioDeIngreso) {
+    public EComision(String dni, String nombre, String apellido, int nroClientesCaptados, double montoXCliente, int anioDeIngreso) {
         super(dni, nombre, apellido, 750, anioDeIngreso);
         this.nroClientesCaptados = nroClientesCaptados;
         this.montoXCliente = montoXCliente;
@@ -15,7 +15,7 @@ public class EComision extends Empleado{
 
     public EComision() {
         super("Sin DNI","Sin nombre","Sin apellido",750, 0);
-        this.montoXCliente=0.0;
+        this.montoXCliente=0;
         this.nroClientesCaptados=0;
     }
 
@@ -48,9 +48,11 @@ public class EComision extends Empleado{
         if (salarioCalculado < 750)
         {
             salarioCalculado=super.getSueldoBase();
+
         }else
         {
             salarioCalculado+= super.getSueldoBase();
+            setSueldoBase(salarioCalculado);
         }
 
         return salarioCalculado;

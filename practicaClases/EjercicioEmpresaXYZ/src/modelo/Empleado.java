@@ -15,12 +15,16 @@ public abstract class Empleado {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.sueldoBase = sueldoBase;
+        this.anioDeIngreso = anioDeIngreso;
     }
     public Empleado()
     {
         this.dni="Sin DNI";
         this.nombre="Sin nombre";
         this.apellido="Sin apellido";
+        this.sueldoBase = 0;
+        this.anioDeIngreso = 0;
 
     }
 
@@ -70,14 +74,9 @@ public abstract class Empleado {
 
     public abstract double calcularSalario();
 
-
-
-
-
-
-
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Empleado{" +
                 "dni=" + dni +
                 ", nombre='" + nombre + '\'' +
