@@ -115,6 +115,6 @@ public class Main {
         return paquetes.size();
     }
    // BONUS TRACK por el 10 y la promoción: gestionar si el paquete ya fue enviado o no. comprobaciones para no enviar un paquete dos veces.
-    //terminar, tiempo 1:55:53
+    // terminar, tiempo 1:55:53
 
 }

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Comparator;
+
 public class PaquetePorTierra extends Paquete
 {
     //atributos
