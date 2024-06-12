@@ -1,11 +1,13 @@
 import Modelo.SobrepasaCantidadException;
 import Modelo.Tablas;
 
+import java.io.EOFException;
+
 public class Main {
     public static void main(String[] args)
     {
         Tablas tablas = new Tablas();
-        tablas.cargarTablaColorOjos();
+       tablas.cargarTablaColorOjos();
         tablas.cargarTablaPosiciones();
 
         try
@@ -14,6 +16,12 @@ public class Main {
         } catch (SobrepasaCantidadException e) {
             System.out.println(e.getMessage());
         }
-        tablas.guardarEnArchivoPorSueldo(2000.0);
+        tablas.guardarEnArchivoPorSueldo(3000);
+       try {
+            tablas.leerArchivo();
+        } catch (EOFException e) {
+            e.printStackTrace();
+        }
+
     }
 }

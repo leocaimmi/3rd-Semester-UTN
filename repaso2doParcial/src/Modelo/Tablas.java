@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import org.xml.sax.helpers.ParserAdapter;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 public class Tablas  {
@@ -38,7 +39,7 @@ public class Tablas  {
         try
         {
 
-            JSONArray jsonArray = new JSONArray(JsonUtiles.leer("jugadores"));
+            JSONArray jsonArray = new JSONArray(JsonUtiles.leer("repaso2doParcial/jugadores"));
 
             for(int i = 0; i<jsonArray.length();i++)
             {
@@ -82,7 +83,7 @@ public class Tablas  {
         try
         {
 
-            JSONArray jsonArray = new JSONArray(JsonUtiles.leer("jugadores"));
+            JSONArray jsonArray = new JSONArray(JsonUtiles.leer("repaso2doParcial/jugadores"));
 
             for(int i = 0; i<jsonArray.length();i++)
             {
@@ -151,8 +152,8 @@ Ej: tabla “colores”, clave “green”, cantidad 3.
         Jugador jugador;
         ObjectOutputStream out = null;
         try {
-            jsonArray = new JSONArray(JsonUtiles.leer("jugadores"));//se puede modularizar porque la reutilizo 2 veces
-            FileOutputStream fileOut = new FileOutputStream("clienteSueldos.bin");//permite el flujo de salida de datos
+            jsonArray = new JSONArray(JsonUtiles.leer("repaso2doParcial/jugadores"));//se puede modularizar porque la reutilizo 2 veces
+            FileOutputStream fileOut = new FileOutputStream("repaso2doParcial/clienteSueldos.bin");//permite el flujo de salida de datos
             out = new ObjectOutputStream(fileOut);//crea un flujo de salida de objetos a partir de los datos(bytes)
 
             for (int i = 0; i < jsonArray.length(); i++)
@@ -189,14 +190,54 @@ Ej: tabla “colores”, clave “green”, cantidad 3.
         } finally
         {
             try {
-                System.out.println("Archvio guardado de manera correcta");
+
+                assert out != null;
                 out.close();//cierro el flujo de datos
+                   System.out.println("Archvio guardado de manera correcta");
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         }
         return rta;
+    }
+    public void leerArchivo() throws EOFException {
+        ArrayList<Jugador>jugadores = null;
+        ObjectInputStream in = null;
+        try {
+            FileInputStream fileInputStream = new FileInputStream("repaso2doParcial/clienteSueldos.bin");
+            in = new ObjectInputStream(fileInputStream);
+            jugadores = new ArrayList<>();
+            while(true)
+            {
+                jugadores.add((Jugador) in.readObject());
+            }
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (EOFException e)
+        {
+            throw new EOFException();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e)
+        {
+            throw new RuntimeException(e);
+        }
+        finally
+        {
+            try
+            {
+                System.out.println(jugadores);
+                assert in != null;
+                in.close();
+                System.out.println("Se leyo correctamente");
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 
