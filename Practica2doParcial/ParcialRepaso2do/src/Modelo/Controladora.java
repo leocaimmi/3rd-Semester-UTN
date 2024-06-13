@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -144,6 +145,77 @@ Hacer un función que devuelva la cantidad de etiquetas según un parámetro env
             exception.printStackTrace();
         }
         return tags.size();
+    }
+    /**FUNCIONES QUE NO ESTAN EN EL PARCIAL PERO SON PARA PRACTICAR*/
+    public boolean guardarListaMayoresArchivo()
+    {
+        boolean rta = false;
+
+        ObjectOutputStream out = null;
+        try
+        {
+            FileOutputStream fileOutputStream = new FileOutputStream("mayores.bin");
+            out = new ObjectOutputStream(fileOutputStream);
+            for(Persona e : mayor.getMayores())
+            {
+                out.writeObject(e);
+            }
+        } catch (IOException e)
+        {
+            throw new RuntimeException(e);
+        }
+        finally
+        {
+            try
+            {
+                out.close();
+                rta = true;
+            } catch (IOException e)
+            {
+                throw new RuntimeException(e);
+            }
+        }
+
+
+        return rta;
+    }
+    public void leerArchivoMayores()
+    {
+
+        FileInputStream fileInputStream;
+        ObjectInputStream in = null;
+        try
+        {
+             fileInputStream = new FileInputStream("mayores.bin");
+             in = new ObjectInputStream(fileInputStream);
+             while(true)
+             {
+                 mayor.agregar((Persona) in.readObject());
+             }
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+        finally
+        {
+            try
+            {
+
+                in.close();
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+
+        }
+
     }
     @Override
     public boolean equals(Object o) {

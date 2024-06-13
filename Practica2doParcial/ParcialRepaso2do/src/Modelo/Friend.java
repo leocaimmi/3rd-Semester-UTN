@@ -1,6 +1,8 @@
 package Modelo;
 
-public class Friend
+import java.io.Serializable;
+
+public class Friend implements Serializable
 {
     //atributos
     private int id;

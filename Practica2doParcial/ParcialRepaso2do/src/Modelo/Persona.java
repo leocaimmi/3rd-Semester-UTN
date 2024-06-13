@@ -1,12 +1,13 @@
 package Modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 /*
 
 Crear las clases Java necesarias para guardar toda la información del archivo. Aquí deben
  procesar el JSON y convertirlo en clases java
  */
-public class Persona
+public class Persona implements Serializable
 {
     //atributos
     private String _id;
