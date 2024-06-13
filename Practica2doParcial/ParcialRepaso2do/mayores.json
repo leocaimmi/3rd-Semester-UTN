@@ -1,0 +1,258 @@
+[
+  {
+    "balance": "blue",
+    "eyeColor": "$2,044.19",
+    "gender": "male",
+    "name": "Charles Mayo",
+    "_id": "649233e6fd52b92412cb24cd",
+    "isActive": false,
+    "age": 18,
+    "friends": [
+      {
+        "name": "Ila Poole",
+        "id": 0
+      },
+      {
+        "name": "Robertson Alvarado",
+        "id": 1
+      },
+      {
+        "name": "Polly Mckinney",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "do",
+      "proident",
+      "ex",
+      "deserunt",
+      "officia",
+      "occaecat",
+      "occaecat"
+    ]
+  },
+  {
+    "balance": "blue",
+    "eyeColor": "$3,999.67",
+    "gender": "male",
+    "name": "Bush Roberson",
+    "_id": "649233e6dca4d36d583922fe",
+    "isActive": true,
+    "age": 25,
+    "friends": [
+      {
+        "name": "Workman Hubbard",
+        "id": 0
+      },
+      {
+        "name": "Yesenia Griffith",
+        "id": 1
+      },
+      {
+        "name": "Melisa Ballard",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "non",
+      "excepteur",
+      "deserunt",
+      "reprehenderit",
+      "deserunt",
+      "dolor",
+      "et"
+    ]
+  },
+  {
+    "balance": "blue",
+    "eyeColor": "$1,534.67",
+    "gender": "male",
+    "name": "Cohen Shannon",
+    "_id": "649233e647fdbce27926c023",
+    "isActive": true,
+    "age": 20,
+    "friends": [
+      {
+        "name": "Jacqueline Ware",
+        "id": 0
+      },
+      {
+        "name": "Flowers Mckee",
+        "id": 1
+      },
+      {
+        "name": "Cheryl Mccullough",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "excepteur",
+      "ad",
+      "reprehenderit",
+      "proident",
+      "cillum",
+      "id",
+      "in"
+    ]
+  },
+  {
+    "balance": "green",
+    "eyeColor": "$3,537.54",
+    "gender": "male",
+    "name": "Martinez Edwards",
+    "_id": "649233e6bc7f30d793e9c73c",
+    "isActive": true,
+    "age": 35,
+    "friends": [
+      {
+        "name": "Leon Sutton",
+        "id": 0
+      },
+      {
+        "name": "Bonnie Cummings",
+        "id": 1
+      },
+      {
+        "name": "Deidre Avery",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "dolor",
+      "voluptate",
+      "adipisicing",
+      "ut",
+      "irure",
+      "elit",
+      "reprehenderit"
+    ]
+  },
+  {
+    "balance": "blue",
+    "eyeColor": "$2,044.19",
+    "gender": "male",
+    "name": "Charles Mayo",
+    "_id": "649233e6fd52b92412cb24cd",
+    "isActive": false,
+    "age": 18,
+    "friends": [
+      {
+        "name": "Ila Poole",
+        "id": 0
+      },
+      {
+        "name": "Robertson Alvarado",
+        "id": 1
+      },
+      {
+        "name": "Polly Mckinney",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "do",
+      "proident",
+      "ex",
+      "deserunt",
+      "officia",
+      "occaecat",
+      "occaecat"
+    ]
+  },
+  {
+    "balance": "blue",
+    "eyeColor": "$3,999.67",
+    "gender": "male",
+    "name": "Bush Roberson",
+    "_id": "649233e6dca4d36d583922fe",
+    "isActive": true,
+    "age": 25,
+    "friends": [
+      {
+        "name": "Workman Hubbard",
+        "id": 0
+      },
+      {
+        "name": "Yesenia Griffith",
+        "id": 1
+      },
+      {
+        "name": "Melisa Ballard",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "non",
+      "excepteur",
+      "deserunt",
+      "reprehenderit",
+      "deserunt",
+      "dolor",
+      "et"
+    ]
+  },
+  {
+    "balance": "blue",
+    "eyeColor": "$1,534.67",
+    "gender": "male",
+    "name": "Cohen Shannon",
+    "_id": "649233e647fdbce27926c023",
+    "isActive": true,
+    "age": 20,
+    "friends": [
+      {
+        "name": "Jacqueline Ware",
+        "id": 0
+      },
+      {
+        "name": "Flowers Mckee",
+        "id": 1
+      },
+      {
+        "name": "Cheryl Mccullough",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "excepteur",
+      "ad",
+      "reprehenderit",
+      "proident",
+      "cillum",
+      "id",
+      "in"
+    ]
+  },
+  {
+    "balance": "green",
+    "eyeColor": "$3,537.54",
+    "gender": "male",
+    "name": "Martinez Edwards",
+    "_id": "649233e6bc7f30d793e9c73c",
+    "isActive": true,
+    "age": 35,
+    "friends": [
+      {
+        "name": "Leon Sutton",
+        "id": 0
+      },
+      {
+        "name": "Bonnie Cummings",
+        "id": 1
+      },
+      {
+        "name": "Deidre Avery",
+        "id": 2
+      }
+    ],
+    "tags": [
+      "dolor",
+      "voluptate",
+      "adipisicing",
+      "ut",
+      "irure",
+      "elit",
+      "reprehenderit"
+    ]
+  }
+]

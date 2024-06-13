@@ -56,55 +56,59 @@ public class Controladora
         JSONObject jsonObject;
         JSONArray jsonArray;
         Persona aux;
-        ArrayList<String> tags = new ArrayList<>();
-        ArrayList<Friend> friends = new ArrayList<>();
+
         try {
-             jsonArray = new JSONArray(JsonUtiles.leer("archivo"));//leo el JSON
-            for(int i = 0;i<jsonArray.length();i++)
-            {
-                 jsonObject = jsonArray.getJSONObject(i);
-                 JSONArray tagsJSON = jsonObject.getJSONArray("tags");
+            jsonArray = new JSONArray(JsonUtiles.leer("archivo")); // Leo el JSON
+            for (int i = 0; i < jsonArray.length(); i++) {
+                jsonObject = jsonArray.getJSONObject(i);
 
-                for(int j = 0;j<tagsJSON.length();j++)//voy a agarrar todos los tags que son strings
-                 {
-                     tags.add(tagsJSON.getString(j));
-                 }
-                 JSONArray friendJSON = jsonObject.getJSONArray("friends");
+                // Reinicializar las listas para cada objeto
+                ArrayList<String> tags = new ArrayList<>();
+                ArrayList<Friend> friends = new ArrayList<>();
 
-                for (int k = 0;k<friendJSON.length();k++)//voy a agarrar todos los friends
-                 {
-                     JSONObject jsonObject1 = friendJSON.getJSONObject(k);
-                     String name = jsonObject1.getString("name");
-                     int id = jsonObject1.getInt("id");
-                     friends.add(new Friend(id,name));
-                 }
-                 aux = new Persona(jsonObject.getString("_id"),
-                         jsonObject.getBoolean("isActive"),
-                         jsonObject.getString("eyeColor"),
-                         jsonObject.getString("balance"),
-                         jsonObject.getString("name"),
-                         jsonObject.getString("gender"),
-                         jsonObject.getInt("age"),
-                         tags,
-                         friends);
-                if(aux.getAge()<18)
-                {
+                // Procesar los tags
+                JSONArray tagsJSON = jsonObject.getJSONArray("tags");
+                for (int j = 0; j < tagsJSON.length(); j++) {
+                    tags.add(tagsJSON.getString(j));
+                }
+
+                // Procesar los friends
+                JSONArray friendJSON = jsonObject.getJSONArray("friends");
+                for (int k = 0; k < friendJSON.length(); k++) {
+                    JSONObject jsonObject1 = friendJSON.getJSONObject(k);
+                    String name = jsonObject1.getString("name");
+                    int id = jsonObject1.getInt("id");
+                    friends.add(new Friend(id, name));
+                }
+
+                // Crear el objeto Persona
+                aux = new Persona(
+                        jsonObject.getString("_id"),
+                        jsonObject.getBoolean("isActive"),
+                        jsonObject.getString("eyeColor"),
+                        jsonObject.getString("balance"),
+                        jsonObject.getString("name"),
+                        jsonObject.getString("gender"),
+                        jsonObject.getInt("age"),
+                        tags,
+                        friends
+                );
+
+                // Validar la edad y agregar a la lista mayor si es mayor de edad
+                if (aux.getAge() < 18) {
                     MenoresException exception = new MenoresException(aux.getAge());
                     exception.printStackTrace();
-                }
-                else
-                {
+                } else {
                     mayor.agregar(aux);
                 }
             }
 
-
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
+
     //Desde la lista genérica pasar a un hashset todos los autores. Implementar el equals
     public void pasarAutoresDeListaAHashSet()//lo hago con friends porque los autores no estan en el JSON...
     {
@@ -217,6 +221,52 @@ Hacer un función que devuelva la cantidad de etiquetas según un parámetro env
         }
 
     }
+    public void mayoresJavaToJSON()
+    { JSONArray jsonArray = new JSONArray();
+        ArrayList<Persona> mayores = mayor.getMayores();
+
+        for (Persona mayor : mayores) {
+            JSONObject jsonObject = new JSONObject();
+            JSONArray arrayFriend = new JSONArray();
+
+            ArrayList<Friend> friends = mayor.getFriends();
+
+            try {
+                jsonObject.put("_id", mayor.get_id());
+                jsonObject.put("isActive", mayor.isActive());
+                jsonObject.put("balance", mayor.getBalance());
+                jsonObject.put("eyeColor", mayor.getEyeColor());
+                jsonObject.put("name", mayor.getName());
+                jsonObject.put("gender", mayor.getGender());
+                jsonObject.put("age", mayor.getAge());
+                jsonObject.put("tags", new JSONArray(mayor.getTags())); // Suponiendo que tags es una lista
+
+                JSONObject friendObject;
+                for (Friend friend : friends)
+                {
+                    friendObject = new JSONObject();
+                    friendObject.put("id", friend.getId());
+                    friendObject.put("name", friend.getName());
+                    arrayFriend.put(friendObject);
+
+                }
+
+               jsonObject.put("friends", arrayFriend);
+                jsonArray.put(jsonObject);
+
+            } catch (JSONException ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+
+        JsonUtiles.grabar(jsonArray);
+    }
+
+
+
+
+
+
     @Override
     public boolean equals(Object o) {
        boolean rta = false;

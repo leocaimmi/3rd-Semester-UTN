@@ -12,7 +12,7 @@ import org.json.JSONException;
 public class JsonUtiles {
 	public static void grabar(JSONArray array) {
 		try {
-			FileWriter file = new FileWriter("test.json");
+			FileWriter file = new FileWriter("mayores.json");
 			file.write(array.toString());
 			file.flush();
 			file.close();
